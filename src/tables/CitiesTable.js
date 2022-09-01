@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Alert, Button } from '@mui/material';
-import getData, { deleteData } from '../helpers';
+import getData from '../helpers';
 import CityCreateForm from '../forms-create/CityCreateForm';
 import CityUpdateForm from '../forms-update/CityUpdateForm';
 import { withStyles } from '@material-ui/core';
@@ -53,17 +53,6 @@ function CitiesTable({
   setShowCityUpdateForm,
   setRenderedData,
 }) {
-  // city post/update/delete URLs
-  // const cityCreateURL = 'http://45.130.15.52:6501/api/services/app/City/Create';
-  // const cityUpdateURL = 'http://45.130.15.52:6501/api/services/app/City/Update';
-  // const cityDeleteURL =
-  //   'http://45.130.15.52:6501/api/services/app/City/Delete?Id=';
-
-  // json-server delete urls
-  // const cityCreateURL = '/cities';
-  // const cityUpdateURL = '/cities/';
-  // const cityDeleteURL = '/cities/';
-
   // selected city update data
   const [selectedCity, setSelectedCity] = useState({});
   const [selectedCityName, setSelectedCityName] = useState('');

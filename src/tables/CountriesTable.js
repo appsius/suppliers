@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import getData, { deleteData } from '../helpers';
+import getData from '../helpers';
 import CountryUpdateForm from '../forms-update/CountryUpdateForm';
 import CountryCreateForm from '../forms-create/CountryCreateForm';
 import { Alert } from '@mui/material';

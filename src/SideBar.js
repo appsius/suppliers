@@ -55,6 +55,7 @@ function SideBar({ classes }) {
     } else {
       setSuppliers(localSuppliers);
     }
+    //eslint-disable-next-line
   }, []);
 
   function hideAllForms() {

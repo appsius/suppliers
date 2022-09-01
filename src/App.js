@@ -1,4 +1,3 @@
-import Header from './Header';
 import SideBar from './SideBar';
 import { withStyles } from '@material-ui/core';
 import styles from './styles/AppStyles';
