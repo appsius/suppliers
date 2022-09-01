@@ -137,11 +137,10 @@ function CountriesTable({
           <TableHead>
             <TableRow>
               <StyledTableCell align='left'>ID</StyledTableCell>
-              <StyledTableCell align='center'>Name</StyledTableCell>
-              <StyledTableCell
-                align='right'
-                className={classes.CountryTableButtons}
-              >
+              <StyledTableCell align='center' style={{ paddingLeft: '16vw' }}>
+                Name
+              </StyledTableCell>
+              <StyledTableCell align='right'>
                 <Button
                   className={classes.Button + ' ' + classes.InsertButton}
                   variant='contained'
@@ -159,7 +158,12 @@ function CountriesTable({
               return (
                 <StyledTableRow key={id}>
                   <StyledTableCell align='left'>{cIdx + 1}</StyledTableCell>
-                  <StyledTableCell align='center'>{name}</StyledTableCell>
+                  <StyledTableCell
+                    align='center'
+                    style={{ paddingLeft: '16vw' }}
+                  >
+                    {name}
+                  </StyledTableCell>
                   <StyledTableCell align='right'>
                     <Button
                       className={classes.Button + ' ' + classes.UpdateButton}

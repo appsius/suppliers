@@ -89,7 +89,10 @@ function SideBar({ classes }) {
   return (
     <div className={classes.Content}>
       <div className={classes.Sidebar}>
-        <div className={classes.Menu} style={{ width: '10vw' }}>
+        <div
+          className={classes.Menu}
+          style={{ width: '11vw', position: 'fixed', top: 0 }}
+        >
           <PopupState variant='popover' popupId='demo-popup-menu'>
             {(popupState) => (
               <React.Fragment>

@@ -14,6 +14,10 @@ body {
   position: absolute !important;
 }
 
+.css-13xy2my {
+  border-radius: 'none !important';
+}
+
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
   width: 10vw !important;
   padding: 0.25rem 0px !important;

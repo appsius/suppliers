@@ -50,10 +50,12 @@ const styles = {
   },
   Table: {
     width: '89vw',
-    borderRadius: '0px !important',
+    borderRadius: 'none !important',
   },
   Tables: {
     overflow: 'auto !important',
+    width: '89vw',
+    marginLeft: '11vw',
   },
   logoTitle: {
     display: 'flex',

@@ -3,7 +3,6 @@ const styles = {
     display: 'flex',
     transition: 'all 0.3s ease-in-out !important',
   },
-
   Hide: {
     display: 'none',
     transition: 'all 0.3s ease-in-out !important',
