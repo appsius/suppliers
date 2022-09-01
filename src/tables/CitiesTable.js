@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Alert, Button } from '@mui/material';
-import { deleteData } from '../helpers';
+import getData, { deleteData } from '../helpers';
 import CityCreateForm from '../forms-create/CityCreateForm';
 import CityUpdateForm from '../forms-update/CityUpdateForm';
 import { withStyles } from '@material-ui/core';
@@ -118,7 +118,12 @@ function CitiesTable({
         console.log(showAlert);
       }, 3000);
     } else {
-      // deleteData(citiesGetURL, setCities, cityDeleteURL + city.id);
+      // delete city
+      const idx = cities.indexOf(city);
+      if (idx > -1) {
+        cities.splice(idx, 1);
+        getData('cities', cities, setCities);
+      }
       setShowCityTable(true);
       setRenderedData('cities-rendered');
     }

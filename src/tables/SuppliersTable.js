@@ -13,6 +13,7 @@ import SupplierCreateForm from '../forms-create/SupplierCreateForm';
 import SupplierUpdateForm from '../forms-update/SupplierUpdateForm';
 import { withStyles } from '@material-ui/core';
 import styles from '../styles/SuppliersTableStyles';
+import getData from '../helpers';
 
 // table rows styles
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -167,8 +168,13 @@ function SuppliersTable({
     setShowSupplierUpdateForm(true);
   }
 
-  const handleSupplierDelete = (id) => {
-    // deleteData(suppliersGetURL, setSuppliers, supplierDeleteURL + id);
+  const handleSupplierDelete = (supplier) => {
+    // delete supplier
+    const idx = suppliers.indexOf(supplier);
+    if (idx > -1) {
+      suppliers.splice(idx, 1);
+      getData('suppliers', suppliers, setSuppliers);
+    }
     setShowSupplierTable(true);
     setRenderedData('suppliers-rendered');
   };
@@ -232,12 +238,20 @@ function SuppliersTable({
           </TableHead>
           <TableBody>
             {suppliers.map((supplier, sIdx) => {
-              const [city] = cities.filter((c) => c.id === supplier.cityId);
               const [supplierType] = supplierTypes.filter(
                 (sT) => sT.id === supplier.supplierTypeId
               );
-              const { id, code, name, displayName, address } = supplier;
+              const [city] = cities.filter((c) => c.id === supplier.cityId);
+              const [country] = countries.filter(
+                (c) => c.id === supplier.countryId
+              );
 
+              console.log(supplier);
+              console.log(city);
+              console.log(country);
+              console.log(countries);
+
+              const { id, code, name, displayName, address } = supplier;
               return (
                 <StyledTableRow key={id}>
                   <StyledTableCell align='left'>{sIdx + 1}</StyledTableCell>
@@ -249,7 +263,7 @@ function SuppliersTable({
                   <StyledTableCell align='center'>{address}</StyledTableCell>
                   <StyledTableCell align='center'>{city.name}</StyledTableCell>
                   <StyledTableCell align='center'>
-                    {city.country.name}
+                    {country.name}
                   </StyledTableCell>
                   <StyledTableCell align='center'>
                     {supplierType.name}
@@ -267,7 +281,7 @@ function SuppliersTable({
                       variant='contained'
                       color='error'
                       id={id}
-                      onClick={(e) => handleSupplierDelete(e.target.id)}
+                      onClick={() => handleSupplierDelete(supplier)}
                     >
                       DELETE
                     </Button>

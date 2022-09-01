@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 import { Paper, Grid, Button, MenuItem, withStyles } from '@material-ui/core';
-// import { updateData } from '../helpers';
+import getData from '../helpers';
 import styles from '../styles/CityUpdateFormStyles';
 
 function CityUpdateForm({
@@ -64,12 +64,11 @@ function CityUpdateForm({
     };
     if (newCity.id && newCity.name && newCity.countryId) {
       // insert updated city
-      // updateData(
-      //   citiesGetURL,
-      //   setCities,
-      //   cityUpdateURL + selectedCity.id,
-      //   newCity
-      // );
+      const idx = cities.indexOf(selectedCity);
+      if (idx > -1) {
+        cities[idx] = newCity;
+      }
+      getData('cities', cities, setCities);
       // set selected data and conds.
       setCityAlreadyExist(false);
       setSelectedCity({});

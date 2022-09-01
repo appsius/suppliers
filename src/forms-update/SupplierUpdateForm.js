@@ -4,12 +4,14 @@ import { TextField, Select } from 'final-form-material-ui';
 import { Paper, Grid, Button, MenuItem, withStyles } from '@material-ui/core';
 // import { updateData } from '../helpers';
 import styles from '../styles/SupplierUpdateFormStyles';
+import getData from '../helpers';
 
 function SupplierUpdateForm({
   classes,
   // supplier data
   cities,
   countries,
+  suppliers,
   supplierTypes,
   suppliersGetURL,
   setSuppliers,
@@ -110,7 +112,11 @@ function SupplierUpdateForm({
       updatedSupplier.supplierTypeId
     ) {
       // insert updated supplier
-
+      const idx = suppliers.indexOf(selectedUpdateSupplier);
+      if (idx > -1) {
+        suppliers[idx] = updatedSupplier;
+      }
+      getData('suppliers', suppliers, setSuppliers);
       // reset selected data
       setUpdatedSupplierCity({});
       setUpdatedSupplierCountry({});

@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import { deleteData } from '../helpers';
+import getData, { deleteData } from '../helpers';
 import CountryUpdateForm from '../forms-update/CountryUpdateForm';
 import CountryCreateForm from '../forms-create/CountryCreateForm';
 import { Alert } from '@mui/material';
@@ -50,20 +50,6 @@ function CountriesTable({
   setShowCountryUpdateForm,
   setRenderedData,
 }) {
-  // country post/update/delete URLs
-  // const countryCreateURL =
-  //   'http://45.130.15.52:6501/api/services/app/Country/Create';
-  // const countryUpdateURL =
-  //   'http://45.130.15.52:6501/api/services/app/Country/Update';
-  // const countryDeleteURL =
-  //   'http://45.130.15.52:6501/api/services/app/Country/Delete?Id=';
-  // country post/update/delete URLs
-
-  // json-server delete urls
-  // const countryCreateURL = '/countries';
-  // const countryUpdateURL = '/countries/';
-  // const countryDeleteURL = '/countries/';
-
   // selected country update data
   const [selectedCountry, setSelectedCountry] = useState({});
   const [selectedCountryName, setSelectedCountryName] = useState('');
@@ -109,7 +95,12 @@ function CountriesTable({
         setShowAlert(false);
       }, 3000);
     } else {
-      // deleteData(countriesGetURL, setCountries, countryDeleteURL + country.id);
+      // delete country
+      const idx = countries.indexOf(country);
+      if (idx > -1) {
+        countries.splice(idx, 1);
+        getData('countries', countries, setCountries);
+      }
       setShowCountryTable(true);
       setRenderedData('countries-rendered');
     }
@@ -164,7 +155,6 @@ function CountriesTable({
           </TableHead>
           <TableBody>
             {countries.map((country, cIdx) => {
-              console.log(countries);
               const { id, name } = country;
               return (
                 <StyledTableRow key={id}>

@@ -4,6 +4,7 @@ import { TextField } from 'final-form-material-ui';
 import { Paper, Grid, Button, withStyles } from '@material-ui/core';
 // import { updateData } from '../helpers';
 import styles from '../styles/CountryUpdateFormStyles';
+import getData from '../helpers';
 
 function CountryUpdateForm({
   classes,
@@ -41,12 +42,17 @@ function CountryUpdateForm({
   // main update function
   const updateCountry = async (values) => {
     values.country === '' && (values.country = selectedCountry.name);
-
     const updatedCountry = {
       id: selectedCountry.id,
       name: values.country,
     };
     if (values.country) {
+      const idx = countries.indexOf(selectedCountry);
+      if (idx > -1) {
+        countries[idx] = updatedCountry;
+      }
+      getData('countries', countries, setCountries);
+
       // insert updated country
       // reset selected data and conds.
       setCountryAlreadyExist([]);
@@ -55,7 +61,7 @@ function CountryUpdateForm({
       setShowCountryUpdateForm(false);
       setShowCountryTable(true);
       setRenderedData('countries-rendered');
-      console.log(updatedCountry);
+      // console.log(updatedCountry);
     }
   };
 

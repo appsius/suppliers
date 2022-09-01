@@ -15,22 +15,15 @@ function SideBar({ classes }) {
   // if no data cond.
   const noDataText = 'Click dashboard to see Suppliers, Countries & Cities';
   const [loading, setLoading] = useState(false);
-  // get data URLs
-  // const suppliersGetURL =
-  //   'http://45.130.15.52:6501/api/services/app/Supplier/GetAll';
-  // const countriesGetURL =
-  //   'http://45.130.15.52:6501/api/services/app/Country/GetAll';
-  // const citiesGetURL = 'http://45.130.15.52:6501/api/services/app/City/GetAll';
-
   // get data URLs - JSON_SERVER
   const suppliersGetURL = 'suppliers';
   const countriesGetURL = 'countries';
   const citiesGetURL = 'cities';
-
   // data to fetch
   const [suppliers, setSuppliers] = useState([]);
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
+  const supplierTypes = data.supplierTypes;
   // hide forms and table
   const [showSupplierCreateForm, setShowSupplierCreateForm] = useState(false);
   const [showSupplierUpdateForm, setShowSupplierUpdateForm] = useState(false);
@@ -45,22 +38,19 @@ function SideBar({ classes }) {
   const localCities = JSON.parse(window.localStorage.getItem('cities'));
   const localCountries = JSON.parse(window.localStorage.getItem('countries'));
   const localSuppliers = JSON.parse(window.localStorage.getItem('suppliers'));
-  const supplierTypes = data.supplierTypes;
 
   useEffect(() => {
-    if (data.cities.length >= localCities.length) {
+    if (localCities === null) {
       setCities(data.cities);
     } else {
       setCities(localCities);
     }
-
-    if (data.countries.length >= localCountries.length) {
+    if (localCountries === null) {
       setCountries(data.countries);
     } else {
       setCountries(localCountries);
     }
-
-    if (data.suppliers.length >= localSuppliers.length) {
+    if (localSuppliers === null) {
       setSuppliers(data.suppliers);
     } else {
       setSuppliers(localSuppliers);
@@ -80,6 +70,8 @@ function SideBar({ classes }) {
   function handleClick(dataUrl, setData, data, popupState, renderedData) {
     popupState.close();
     setLoading(true);
+    // console.log(data);
+
     getData(dataUrl, data, setData);
     hideAllForms();
     if (renderedData === 'suppliers-rendered') {
@@ -137,7 +129,7 @@ function SideBar({ classes }) {
                         handleClick(
                           suppliersGetURL,
                           setSuppliers,
-                          data.suppliers.length > localSuppliers.length
+                          localSuppliers === null
                             ? data.suppliers
                             : localSuppliers,
                           popupState,
@@ -157,7 +149,7 @@ function SideBar({ classes }) {
                         handleClick(
                           countriesGetURL,
                           setCountries,
-                          data.countries.length > localCountries.length
+                          localCountries === null
                             ? data.countries
                             : localCountries,
                           popupState,
@@ -177,9 +169,7 @@ function SideBar({ classes }) {
                         handleClick(
                           citiesGetURL,
                           setCities,
-                          data.cities.length > localCities.length
-                            ? data.cities
-                            : localCities,
+                          localCities === null ? data.cities : localCities,
                           popupState,
                           'cities-rendered'
                         )

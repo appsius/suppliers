@@ -45,9 +45,7 @@ function CountryCreateForm({
     if (values.country) {
       // insert country data
       const updatedCountries = [...countries, newCountry];
-      console.log(updatedCountries);
       getData(countriesGetURL, updatedCountries, setCountries);
-      // createData(countriesGetURL, setCountries, countryCreateURL, newCountry);
       // reset to initial values
       setCountryAlreadyExist([]);
       // hide country form, show table
