@@ -1,11 +1,10 @@
 const styles = {
   Content: {
-    height: '91vh !important',
+    height: '100vh !important',
   },
   Sidebar: {
     display: 'flex !important',
     flexDirection: 'row !important',
-    height: '91vh !important',
     backgroundColor: '#fffcf8 !important',
     color: 'black !important',
   },
@@ -13,11 +12,13 @@ const styles = {
     backgroundColor: 'rgb(221 221 221) !important',
     width: '11vw !important',
     color: 'white !important',
-    paddingTop: '11px !important',
+    // paddingTop: '11px !important',
     display: 'flex !important',
     flexDirection: 'column !important',
     alignItems: 'center !important',
     justifyContent: 'flex-start !important',
+    overflowY: '100%',
+    minHeight: '100vh',
   },
   MenuList: {
     marginLeft: '-8px !important',
@@ -50,10 +51,23 @@ const styles = {
   Table: {
     width: '89vw',
     borderRadius: '0px !important',
-    overflow: 'hidden !important',
   },
   Tables: {
-    overflowY: 'auto !important',
+    overflow: 'auto !important',
+  },
+  logoTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '10.5vw',
+    height: '4vw',
+    margin: '0.25vw 0 .8vw',
+    fontSize: '18px',
+    fontWeight: '400',
+    letterSpacing: '0.01071em',
+    color: '#00ffa9e6',
+    backgroundColor: 'black',
+    lineHeight: '1.5rem',
   },
   Show: {
     display: 'flex',

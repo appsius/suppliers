@@ -101,6 +101,7 @@ function SideBar({ classes }) {
                     justifyContent: 'center',
                   }}
                 >
+                  <h4 className={classes.logoTitle}>Supplier App</h4>
                   <Button
                     variant='contained'
                     {...bindTrigger(popupState)}

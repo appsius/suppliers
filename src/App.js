@@ -6,7 +6,7 @@ import styles from './styles/AppStyles';
 function App({ classes }) {
   return (
     <div className={classes.App}>
-      <Header />
+      {/* <Header /> */}
       <SideBar />
     </div>
   );
