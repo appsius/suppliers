@@ -243,7 +243,7 @@ function SuppliersTable({
               );
               const [city] = cities.filter((c) => c.id === supplier.cityId);
               const [country] = countries.filter(
-                (c) => c.id === supplier.countryId
+                (c) => c.id === city.countryId
               );
 
               console.log(supplier);

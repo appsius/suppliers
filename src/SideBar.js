@@ -89,7 +89,7 @@ function SideBar({ classes }) {
   return (
     <div className={classes.Content}>
       <div className={classes.Sidebar}>
-        <div className={classes.Menu}>
+        <div className={classes.Menu} style={{ width: '10vw' }}>
           <PopupState variant='popover' popupId='demo-popup-menu'>
             {(popupState) => (
               <React.Fragment>
@@ -108,18 +108,15 @@ function SideBar({ classes }) {
                       backgroundColor: 'black',
                       textTransform: 'uppercase',
                       minWidth: '64px',
-                      padding: '6px 16px',
+                      padding: '0.3vw 1.75vw',
                       borderRadius: '4px',
                     }}
                   >
                     Dashboard
                   </Button>
-                  <Menu
-                    {...bindMenu(popupState)}
-                    className={classes.MenuList}
-                    style={{ width: '12vw' }}
-                  >
+                  <Menu {...bindMenu(popupState)} className={classes.MenuList}>
                     <MenuItem
+                      style={{ width: '10vw' }}
                       className={
                         renderedData === 'suppliers-rendered'
                           ? `${classes.MenuListItemRendered} ${classes.MenuListItem}`
@@ -140,6 +137,7 @@ function SideBar({ classes }) {
                       Suppliers
                     </MenuItem>
                     <MenuItem
+                      style={{ width: '10vw' }}
                       className={
                         renderedData === 'countries-rendered'
                           ? `${classes.MenuListItemRendered} ${classes.MenuListItem}`
@@ -160,6 +158,7 @@ function SideBar({ classes }) {
                       Countries
                     </MenuItem>
                     <MenuItem
+                      style={{ width: '10vw' }}
                       className={
                         renderedData === 'cities-rendered'
                           ? `${classes.MenuListItemRendered} ${classes.MenuListItem}`
